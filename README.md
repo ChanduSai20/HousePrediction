@@ -1,8 +1,8 @@
-# California Housing Price Prediction 🏠
+# California Housing Price Prediction 
 
 An end-to-end Machine Learning pipeline utilizing Python, Scikit-Learn, and Pandas to predict median house values in California. This project demonstrates advanced data preprocessing, diagnostic visualization, debugging data leakage, and transitioning from linear to ensemble-based machine learning models.
 
-## 📊 Project Overview & Architecture
+## Project Overview & Architecture
 
 The objective of this project is to predict the `median_house_value` of various California districts based on demographic, geographic, and structural features. 
 
@@ -14,7 +14,6 @@ The pipeline undergoes four major phases:
 
 ---
 
-## 🛠️ The Data Engineering Journey
 
 ### 1. Handling Skewness & Target Capping
 Initial visualizations revealed heavy right-skewed tails across multiple numerical features (`population`, `total_rooms`, `total_bedrooms`, and `households`). Additionally, the data exhibited artificial maximum ceilings (e.g., a sharp data spike capping the target variable at $500,000$).
@@ -30,27 +29,19 @@ During validation, an initial model trial returned an artificial, near-perfect $
 
 ---
 
-## 📈 Model Performance & Evolution
+## Model Performance & Evolution
 
 The project evaluates two distinct algorithmic paradigms to compare how linear models handle complex spatial data versus tree-based ensemble methods.
 
 ### 1. Baseline: Polynomial Ridge Regression
 * **Approach:** Degree 2 polynomial features with an $L2$ regularization penalty ($\alpha = 1.0$) to control structural complexity. 
 * **Results:** * **$R^2$ Score:** `0.61` (Explains 61% of data variance honestly)
-  * **Mean Absolute Error (MAE):** `~$46,000`
+  * **Mean Absolute Error (MAE):** `~$46,500`
 * **Limitation:** Linear models struggle to natively map non-linear bimodal geographic features like `latitude` and `longitude` (e.g., coastal metropolitan pricing pockets).
 
 ### 2. Champion Model: Random Forest Regressor
 * **Approach:** A non-linear ensemble model utilizing recursive data partitioning to handle localized geographic interactions and regional target capping safely.
 * **Results:**
-  * **$R^2$ Score:** **`0.80`** 🎉 *(An absolute 19% performance jump over the linear baseline)*
+  * **$R^2$ Score:** **`0.80`**  *(An absolute 19% performance jump over the linear baseline)*
 * **Why it Won:** The tree structure isolates highly priced coastal coordinate boundaries effortlessly, preventing the artificial $500k target ceiling from warping global predictions.
 
----
-
-## 💻 Tech Stack & Libraries
-* **Language:** Python 3.x
-* **Core Libraries:** `Scikit-Learn`, `Pandas`, `NumPy`
-* **Visualization:** `Seaborn`, `Matplotlib`
-
----
