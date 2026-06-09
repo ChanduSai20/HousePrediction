@@ -35,13 +35,13 @@ The project evaluates two distinct algorithmic paradigms to compare how linear m
 
 ### 1. Baseline: Polynomial Ridge Regression
 * **Approach:** Degree 2 polynomial features with an $L2$ regularization penalty ($\alpha = 1.0$) to control structural complexity. 
-* **Results:** * **$R^2$ Score:** `0.61` (Explains 61% of data variance honestly)
+* **Results:** * **$R^2$ Score:** `0.65` (Explains 65% of data variance honestly)
   * **Mean Absolute Error (MAE):** `~$46,500`
 * **Limitation:** Linear models struggle to natively map non-linear bimodal geographic features like `latitude` and `longitude` (e.g., coastal metropolitan pricing pockets).
 
 ### 2. Champion Model: Random Forest Regressor
 * **Approach:** A non-linear ensemble model utilizing recursive data partitioning to handle localized geographic interactions and regional target capping safely.
 * **Results:**
-  * **$R^2$ Score:** **`0.80`**  *(An absolute 19% performance jump over the linear baseline)*
+  * **$R^2$ Score:** **`0.82`**  *(20% performance jump over the linear baseline)*
 * **Why it Won:** The tree structure isolates highly priced coastal coordinate boundaries effortlessly, preventing the artificial $500k target ceiling from warping global predictions.
 
